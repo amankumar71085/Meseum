@@ -1,0 +1,117 @@
+body {
+    background-image: url(home.html);
+}
+
+.chat-container {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 30px;
+    width: 300px;
+    border: 1px solid #d8b598; /* Soft Beige Border */
+    border-radius: 10px;
+    background-color: #fff7e6; /* Soft Cream Background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly Deeper Shadow */
+    z-index: 1000;
+    font-family: 'Calibri', sans-serif;
+}
+
+.chat-header {
+    background-color: #d2691e; /* Warm Chestnut */
+    color: #fff7e6; /* Soft Cream Text */
+    padding: 10px;
+    padding-left: 20px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    font-size: larger;
+}
+
+.chat-box {
+    height: 450px;
+    overflow-y: auto;
+    border: none; /* No Border for Warm Feel */
+    padding: 10px;
+    background-color: #ffe4b5; /* Light Warm Beige */
+}
+
+.chat-box a {
+    color: #d2691e; /* Warm Chestnut */
+}
+
+.chat-box .message {
+    display: flex;
+    margin: 5px 0;
+}
+
+.chat-box .message.userMessage {
+    justify-content: flex-end;
+}
+
+.chat-box .message.botMessage {
+    justify-content: flex-start;
+}
+
+.chat-box .message .bubble {
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.chat-box .message.userMessage .bubble {
+    background-color: #d2691e; /* Warm Chestnut */
+    color: #fff7e6; /* Soft Cream Text */
+    border-top-right-radius: 0;
+}
+
+.chat-box .message.botMessage .bubble {
+    background-color: #fff7e6; /* Soft Cream */
+    color: #4b2e2e; /* Dark Brown Text */
+    border-top-left-radius: 0;
+}
+
+.input-container {
+    display: flex;
+}
+
+.input-container input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #d8b598; /* Soft Beige Border */
+    border-radius: 0 0 0 10px;
+}
+
+.input-container button {
+    padding: 10px;
+    border: none;
+    background-color: #d2691e; /* Warm Chestnut */
+    color: #fff7e6; /* Soft Cream Text */
+    border-radius: 0 0 10px 0;
+    cursor: pointer;
+}
+
+.chat-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #d2691e; /*Warm Chestnut
+    background-color: #1f0303;  Warm Chestnut */
+    color: #fff7e6; /* Soft Cream Text */
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly Deeper Shadow */
+}
+
+/* Style for the speaker icon */
+.speaker-icon {
+    font-size: 16px;
+    margin-left: 5px;
+    cursor: pointer;
+    color: #d2691e; /* Warm Chestnut for consistency */
+    display: inline-block;
+    vertical-align: middle;
+}

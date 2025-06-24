@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museum Home</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="chatbot.css">
+    <style>
+        /* Your existing styles */
+        .mic-button {
+            font-size: 1.5em;
+            background-color: #f0f0f0;
+            border: none;
+            cursor: pointer;
+        }
+        .input-container {
+            display: flex;
+            align-items: center;
+        }
+        .input-container input {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Museum!</h1>
+    <button class="chat-button" onclick="toggleChat()">Chat</button>
+    <div class="chat-container" id="chat-container">
+        <div class="chat-header">
+            <span>Ticket Counter</span>
+            <span class="close-button" onclick="toggleChat()">×</span>
+        </div>
+        <div class="chat-box" id="chatbox">
+            <!-- Language Selection Dropdown -->
+            <div class="language-select">
+                <label for="language">Choose Language: </label>
+                <select id="language">
+                    <option value="en">English</option>
+                    <option value="hi">Hindi</option>
+                    <option value="or">Odia</option>
+                    <option value="te">Telugu</option>
+                    <option value="bho">Bhojpuri</option>
+                    <option value="jp">Japanese</option>
+                </select>
+            </div>
+            <!-- Rest of your chatbox code -->
+        </div>
+        <div class="input-container">
+            <button class="mic-button" onclick="startListening()">🎤</button>
+            <input type="text" id="userInput" placeholder="Type your message here..." onkeydown="if (event.key === 'Enter') handleUserInput()">
+            <button id="sendButton" onclick="handleUserInput()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Check if SpeechRecognition is supported
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = 'en'; // Default language
+
+        // Function to start listening
+        function startListening() {
+            recognition.start();
+        }
+
+        // Handle speech recognition results
+        recognition.onresult = function(event) {
+            const transcript = event.results[0][0].transcript;
+            document.getElementById('userInput').value = transcript;
+            handleUserInput(); // Process the input as if it was typed
+        };
+
+        // Handle speech recognition errors
+        recognition.onerror = function(event) {
+            console.error('Speech recognition error:', event.error);
+        };
+
+        // Update language when the user selects a different option
+        document.getElementById('language').addEventListener('change', function() {
+            const selectedLanguage = this.value;
+            recognition.lang = selectedLanguage;
+        });
+
+        // Placeholder functions for demonstration purposes
+        function toggleChat() {
+            const chatContainer = document.getElementById('chat-container');
+            chatContainer.style.display = chatContainer.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function handleUserInput() {
+            // Implement your chatbot's user input handling logic here
+            console.log('User input:', document.getElementById('userInput').value);
+        }
+    </script>
+    <script src="chatbot.js"></script>
+
+</body>
+</html>
